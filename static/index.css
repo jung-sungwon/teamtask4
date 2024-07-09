@@ -89,3 +89,10 @@
     width:20%;
     height: auto;
 }
+#re{
+    display: flex;
+    justify-content: center;
+    margin-top:20px;
+    align-items: center;
+    text-align: center;
+}
