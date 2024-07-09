@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보</title>
+    <link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+    <h1 class="h1-title"> 나를 이겨보라냥 😼🪄 </h1>
+    <div class="game-board">
+        <img src="https://velog.velcdn.com/images/chanloper/post/7c13c310-1378-447d-96e8-c9a4800ed768/image.png" alt="main">
+    </div>
+    <div class="player_btn">
+        <!-- 사용자가 선택할 수 있는 버튼들을 포함한 폼 -->
+        <form action="/play" method="Post">
+            <button type="submit" name="choice" value="바위 ✊" class="choice_btn">
+            <img src="https://velog.velcdn.com/images/chanloper/post/d7978950-8c62-4332-a35e-e3aa33ebd5eb/image.png" alt="win_rock">
+            </button>
+            <button type="submit" name="choice" value="가위 ✌️" class="choice_btn">
+            <img src="https://velog.velcdn.com/images/chanloper/post/33a7252d-79d8-419f-9ed5-849899c023a9/image.png" alt="win_scissors">
+            </button>
+            <button type="submit" name="choice" value="보 ✋" class="choice_btn">
+            <img src="https://velog.velcdn.com/images/chanloper/post/1e04e9ac-2532-4960-8756-fa053c6e599e/image.png" alt="win_paper">
+            </button>
+        </form>
+    </div>
+
+    <div class="result_container">
+    {% if user_choice %}
+        <!-- 사용자 선택, 컴퓨터 선택, 게임 결과를 출력 -->
+        <p>사용자 선택 : {{user_choice}}</p>
+        <p>컴퓨터 선택 : {{computer_choice}}</p>
+        <p> 결과 : {{result}}</p>
+    {% endif %}
+    </div>
+    <button class="open-modal-btn" onclick="openModallAndplayCatMeow()">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx7UWnPKFHf-oSd54p9U_fz747IL55LOsI1w&s" alt="modal-open">   
+    </button>
+    <div class="modal" id="rsp-modal">
+        <div class="modal-content">
+            <!-- 추가적인 모달 내용 -->
+            <h2>게임 기록</h2>
+            <!-- 승/패/무승부 기록 출력 -->
+            <p>승: {{ win }}</p>
+            <p>패: {{ lose }}</p>
+            <p>무승부: {{ draw }}</p>
+            <!-- 모달 닫기 버튼 -->
+            <button class="close-modal-btn" onclick="closeModal()">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx7UWnPKFHf-oSd54p9U_fz747IL55LOsI1w&s" alt="modal-close">
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let cataudio = new Audio("/static/audio/cat_meow.mp3");
+        cataudio.volume = 0.5;      
+        function openModal(){
+            document.getElementById('rsp-modal').style.display='block';
+        }
+        function closeModal() {
+            document.getElementById('rsp-modal').style.display = 'none';
+        }
+        function playCatMeow() {
+            cataudio.currentTime = 0;  
+            cataudio.play();
+        }
+        function openModallAndplayCatMeow(){
+            playCatMeow();
+            openModal();
+        }
+    </script>
+</body>
+</html>
