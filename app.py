@@ -13,7 +13,7 @@ lose = 0
 @app.route('/')
 def home():
     # 초기화한 무승부/승/패 기록을 HTML에 렌더링하여 전달(우선)
-    return render_template('index.html')
+    return render_template('index.html', win=win, lose=lose, draw=draw)
 
 
 # 최종 목적은 html 에서 사용자가 가위,바위,보 중 선택하는 것
