@@ -90,9 +90,34 @@
     height: auto;
 }
 #re{
-    display: flex;
-    justify-content: center;
-    margin-top:20px;
-    align-items: center;
     text-align: center;
+    position: relative;
+}
+#re p{
+    margin:0;
+    font-size: 20px;
+    position:absolute;
+    top: 50%; /* 부모 요소의 중앙에 위치  */
+    left: 50%; /* 부모 요소의 중앙에 위치 */
+    transform: translate(-50%, -50%);
+}
+.open-modal-btn_first{
+    display: block; /* 버튼을 블록 수준 요소로 표시하여 가운데 정렬할 수 있도록 합니다. */
+    margin: 10px auto; /* 자동 마진을 사용하여 가운데 정렬. */
+    cursor: pointer; 
+    outline: none; 
+    border: none; 
+    background-color: transparent; /* 배경색을 투명하게 설정 */
+    padding: 0; 
+    position: relative;
+    bottom: -15px;
+}
+.open-modal-btn_first img {
+    width: 50%;
+    height: auto; /* 높이를 자동으로 설정하여 이미지 비율을 유지합니다. */
+    display: block; /* 이미지를 블록 수준 요소로 표시하여 가운데 정렬 */
+    margin: 0 auto; /* 자동 마진을 사용하여 가운데 정렬합니다. */
+}
+.open-modal-btn_first:hover{
+    transform: scale(1.5);
 }
