@@ -1,5 +1,5 @@
 import random
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, redirect, url_for
 import os
 from flask_sqlalchemy import SQLAlchemy
 
@@ -64,7 +64,18 @@ def play(user_choice):
 def play_game():
     user_choice = request.form.get('choice')
     result, user_choice, computer_choice = play(user_choice)
-    return render_template('index.html', user_choice=user_choice, computer_choice=computer_choice, result=result, win=session['win'], draw=session['draw'], lose=session['lose'])
+    games = RPS.query.all()
+    return render_template('index.html', games=games, user_choice=user_choice, computer_choice=computer_choice, result=result, win=session['win'], draw=session['draw'], lose=session['lose'])
+
+
+@app.route('/reset', methods=['POST'])
+def reset_game():
+    # 데이터베이스 초기화
+    with app.app_context():
+        db.drop_all()
+        db.create_all()
+    # 홈 화면으로 리다이렉트
+    return redirect(url_for('home'))
 
 
 if __name__ == '__main__':

@@ -44,18 +44,24 @@
     </div>
     
     
-    
-    <button class="open-modal-btn" onclick="openModallAndplayCatMeow()">
+    <div id="re_second">
+    <button class="open-modal-btn_second" onclick="openModallAndplayCatMeow()">
+        <p id="re_second">전적보기</p>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx7UWnPKFHf-oSd54p9U_fz747IL55LOsI1w&s" alt="modal-open">   
     </button>
+    </a>
+    </div>
+
     <div class="modal" id="rsp-modal">
         <div class="modal-content">
             <!-- 추가적인 모달 내용 -->
             <h2>게임 기록</h2>
             <!-- 승/패/무승부 기록 출력 -->
-            <p>승: {{ win }}</p>
-            <p>패: {{ lose }}</p>
-            <p>무승부: {{ draw }}</p>
+            {% for game in games %}
+            <p>{{ loop.index }}판째 - 사용자 선택: {{ game.user_choice }}, 컴퓨터 선택: {{ game.computer_choice }}, 
+                결과: {{ game.result }}</p>
+            {% endfor %}
+        </div>
             <!-- 모달 닫기 버튼 -->
             <button class="close-modal-btn" onclick="closeModal()">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx7UWnPKFHf-oSd54p9U_fz747IL55LOsI1w&s" alt="modal-close">
