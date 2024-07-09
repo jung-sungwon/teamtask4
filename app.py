@@ -14,10 +14,13 @@ db = SQLAlchemy(app)
 
 class RPS(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    result = db.Column(db.String, nullable=False)  # 'win', 'lose', or 'draw'
+    result = db.Column(db.String, nullable=False)
+    user_choice = db.Column(db.String, nullable=False)
+    # 'win', 'lose', or 'draw'
+    computer_choice = db.Column(db.String, nullable=False)
 
     def __repr__(self):
-        return f'RPS(id={self.id}, result={self.result})'
+        return f'RPS(id={self.id}, result={self.result}, computer_choice={self.computer_choice}, user_choice={self.user_choice})'
 
 
 with app.app_context():
@@ -50,7 +53,8 @@ def play(user_choice):
         session['lose'] += 1
         result = "컴퓨터 승리!"
 
-    new_result = RPS(result=result)
+    new_result = RPS(result=result, user_choice=user_choice,
+                     computer_choice=computer_choice)
     db.session.add(new_result)
     db.session.commit()
     return result, user_choice, computer_choice
