@@ -42,3 +42,15 @@ def play(user_choice):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+@app.route('/play', methods=['POST'])
+def play_game():
+    # 사용자가 선택한 값 가져오기
+    user_choice = request.form.get('choice')
+    result, user_choice, computer_choice = play(user_choice)
+    # index.html 템플릿에 렌더링하여 사용자 선택, 컴퓨터 선택, 게임 결과 전달
+    return render_template('index.html', user_choice=user_choice, computer_choice=computer_choice, result=result, win=win, draw=draw, lose=lose)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
