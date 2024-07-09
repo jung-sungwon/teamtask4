@@ -1,0 +1,91 @@
+#rsp-modal{
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 9999;
+}
+.modal-content {
+    background-color: white;
+    width: 60%;
+    max-width: 600px;
+    margin: 15% auto; /* �섏쭅, �섑룊 媛��대뜲 �뺣젹 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.close-modal-btn {
+    background-color: white; /* 鍮④컙�� 諛곌꼍 */
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    float: right;
+    width:30%;
+    height:auto;
+}
+.close-modal-btn img{
+    width:40%;
+}
+/* 紐⑤떖 �リ린 踰꾪듉 �몃쾭 �④낵 */
+.close-modal-btn img:hover {
+    transform: scale(1.3);
+}
+.player_btn{
+    display: flex;
+    justify-content: center;
+    margin-top:20px;
+}
+.choice_btn {
+    border: none;
+    background-color: transparent;
+    margin: 0 10px;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.choice_btn img {
+    width: 80%;/* �대�吏� �ш린 議곗젙 */
+    height: auto;
+    transition: transform 0.3s ease-in-out; /* �좏깮 �� �좊땲硫붿씠�� �④낵 */
+}
+.choice_btn:hover{
+    transform: scale(1.5); /* 留덉슦�� �몃쾭 �� �대�吏� �뺣� */
+}
+.game-board{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.h1-title{
+    text-align: center;
+}
+.result_container{
+    text-align: center;
+    margin-top:7%;
+    font-size: 20px;
+}
+.open-modal-btn {
+    border: none;
+    background-color: transparent;
+    margin: 0 10px;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.open-modal-btn img{
+    width:20%;
+    height: auto;
+}
