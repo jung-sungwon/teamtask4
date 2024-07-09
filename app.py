@@ -2,7 +2,6 @@ import random
 from flask import Flask, render_template, request
 import os
 
-rsp = ['가위', '바위', '보']
 app = Flask(__name__)
 
 # 초기 무승부, 승리, 패배 초기화 (기본)
@@ -17,23 +16,29 @@ def home():
     return render_template('index.html')
 
 
-while True:
-    player = input('가위,바위,보 중 하나를 선택하세요. ')
-    computer = random.choice(rsp)
-    print(computer)
+# 최종 목적은 html 에서 사용자가 가위,바위,보 중 선택하는 것
+# 터미널의 input X / 함수 사용
+def play(user_choice):
+    global draw, win, lose  # draw , win ,lose 은 글로벌 함수
+    choices = ['가위', '바위', '보']
+    computer_choice = random.choice(choices)
 
-    if player not in rsp:
-        print("다시 내세요.")
-        continue
-
-    if player == computer:
+    # result 안에 값을 담을 담기
+    result = ""
+    if user_choice not in choices:
+        result = "유효 값이 아닙니다."
+    elif user_choice == computer_choice:
         draw += 1
-        print('무')
-    elif (computer == '가위' and player == '바위') or (computer == '바위' and player == '보') or (
-            computer == '보' and player == '가위'):
+        result = "비겼습니다"
+    elif (user_choice == "바위 ✊" and computer_choice == "가위 ✌️") or (user_choice == "보 ✋" and computer_choice == "바위 ✊") or (user_choice == "가위 ✌️" and computer_choice == "보 ✋"):
         win += 1
-        print('승')
+        result = "유저 승리!"
     else:
         lose += 1
-        print('패')
-print()
+        reulst = "컴퓨터 승리!"
+
+    return result, user_choice, computer_choice
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
